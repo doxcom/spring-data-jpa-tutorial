@@ -1,5 +1,6 @@
 package com.dailycodebuffer.spring_data_jpa_tutorial.repository;
 
+import com.dailycodebuffer.spring_data_jpa_tutorial.entity.Guardian;
 import com.dailycodebuffer.spring_data_jpa_tutorial.entity.Student;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,13 +26,31 @@ class StudentRepositoryTest {
                 .emailId("aldoperez@gmail.com")
                 .firstName("aldo")
                 .lastName("perez")
-                .guardianName("Nikkhil")
-                .guardianEmail("nikk13@gmail.com")
-                .guardianMobile("390284938943289")
+               // .guardianName("Nikkhil")
+               // .guardianEmail("nikk13@gmail.com")
+               // .guardianMobile("390284938943289")
                 .build();
 
         studentRepository.save(student);
 
+    }
+
+    @Test
+    public void saveStudentWithGuardian(){
+
+        Guardian guardian = Guardian.builder()
+                .email("nikkumar@gmail.com")
+                .name("nikhil")
+                .mobile("493787498748")
+                .build();
+        Student student = Student.builder()
+                .firstName("shiva")
+                .emailId("shiva23@gmail.com")
+                .lastName("kumhar")
+                .guardian(guardian)
+                .build();
+
+        studentRepository.save(student);
     }
 
 
@@ -40,5 +59,15 @@ class StudentRepositoryTest {
         List<Student> studentsList = studentRepository.findAll();
 
         System.out.println("student list :  " + studentsList);
+    }
+
+
+
+    @Test
+    public void printStudentByFirstName() {
+
+        List<Student> student = studentRepository.findByFirstName("aldo");
+
+        System.out.println("student list :  " + student);
     }
 }
