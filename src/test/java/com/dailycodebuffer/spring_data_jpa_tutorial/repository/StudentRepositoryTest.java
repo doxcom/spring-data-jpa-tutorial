@@ -4,12 +4,12 @@ import com.dailycodebuffer.spring_data_jpa_tutorial.entity.Guardian;
 import com.dailycodebuffer.spring_data_jpa_tutorial.entity.Student;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+
 
 
 @SpringBootTest
@@ -104,4 +104,15 @@ class StudentRepositoryTest {
                 studentRepository.getStudentFirstNameByEmailAddress("shiva23@gmail.com");
         System.out.println("firstName = " + firstName);
     }
+
+    @Test
+    public void printgetStudentByEmailAddressNative(){
+        Student student =
+                studentRepository.getStudentByEmailAddressNative(
+                        "shiva23@gmail.com" //query complex SELECT * FROM tbl_student s where s.email_address = ?
+                );
+        System.out.println("student = " + student);
+    }
+
+
 }
