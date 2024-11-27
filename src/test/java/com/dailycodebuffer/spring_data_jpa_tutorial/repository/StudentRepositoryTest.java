@@ -126,4 +126,13 @@ class StudentRepositoryTest {
     }
 
 
+    @Test
+    public void updateStudentNameByEmailAddress(){
+        studentRepository.updateStudentNameByEmailId(
+                "shiva shankart",
+                "shiva23@gmail.com"
+        );
+    }
+
+
 }
