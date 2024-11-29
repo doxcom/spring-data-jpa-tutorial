@@ -27,7 +27,8 @@ public class CourseMaterial {
 
     @OneToOne(
             cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY // with fetch lazy :when you fetch course material it will not require fetch course table too
+            fetch = FetchType.LAZY, // with fetch lazy :when you fetch course material it will not require fetch course table too
+            optional = false//when you will try to save a course, course material will be required
     )
     @JoinColumn(
             name="course_id", //this will be an extra field for CourseMaterial table to map to Course table as one to one
