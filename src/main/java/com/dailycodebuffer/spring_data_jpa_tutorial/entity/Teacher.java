@@ -28,7 +28,7 @@ public class Teacher {
   private String firstName;
   private String lastName;
 
-
+/*
   @OneToMany(
           cascade = CascadeType.ALL
   )
@@ -36,6 +36,5 @@ public class Teacher {
           name="teacher_id",
           referencedColumnName = "teacherId" //an existing column on Teacher table
   )
-  private List<Course> courses;
-
+  private List<Course> courses; */
 }

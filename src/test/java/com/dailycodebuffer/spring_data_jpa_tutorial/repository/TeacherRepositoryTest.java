@@ -33,7 +33,7 @@ class TeacherRepositoryTest {
                 Teacher.builder()
                         .firstName("Qutub")
                         .lastName("Khan")
-                        .courses(List.of(courseDBA,courseJava)) //need to pass a list
+                      //  .courses(List.of(courseDBA,courseJava)) //need to pass a list
                         .build();
 
         teacherRepository.save(teacher);

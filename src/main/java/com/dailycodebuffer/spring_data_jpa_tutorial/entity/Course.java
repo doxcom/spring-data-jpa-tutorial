@@ -37,4 +37,15 @@ public class Course {
     private CourseMaterial courseMaterial;
 
 
+    @ManyToOne(
+            cascade = CascadeType.ALL //when you try to save course or teacher all the
+                                      // changes on these tables will be related
+    )
+    @JoinColumn(
+            name ="teacher_id",
+            referencedColumnName = "teacherId" //from class/table TEACHER
+    )
+    private Teacher teacher;
+
+
 }
