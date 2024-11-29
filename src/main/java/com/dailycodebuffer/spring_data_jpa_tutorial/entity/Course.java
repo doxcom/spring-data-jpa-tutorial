@@ -7,6 +7,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -48,4 +51,25 @@ public class Course {
     private Teacher teacher;
 
 
+    //
+    @ManyToMany(
+            cascade = CascadeType.ALL
+    )
+    @JoinTable(
+            name = "student_course_map", //name of table that will join course and student tables
+            joinColumns = @JoinColumn(
+                    name = "course_id", //column from course table
+                    referencedColumnName = "courseId" //column on the Course Class with primary id
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "student_id",
+                    referencedColumnName = "studentId"
+            ) //table with the mapping keys between the course and student table (many to many mapping)
+    )
+    private List<Student> students;
+
+    public void addStudent(Student student) {
+        if(students == null) students = new ArrayList<>();
+        students.add(student);
+    }
 }
